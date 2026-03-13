@@ -163,8 +163,9 @@ function ColorRow({ label, color, onChange, active }) {
 }
 
 // ─── Physics Sphere ──────────────────────────────────────────────
-const BOUNDS_X = 16
-const BOUNDS_Y = 9
+const IS_PORTRAIT = typeof window !== 'undefined' && window.innerHeight > window.innerWidth
+const BOUNDS_X = IS_PORTRAIT ? 9 : 16
+const BOUNDS_Y = IS_PORTRAIT ? 16 : 9
 
 function Sphere({ position, children, vec = new THREE.Vector3(), scale = 1, r = THREE.MathUtils.randFloatSpread, accent, color = 'white', ...props }) {
   const api = useRef()
