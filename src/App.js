@@ -111,9 +111,9 @@ export default function App(props) {
           <Canvas
             flat shadows
             onClick={handleClick}
-            dpr={[1, 1.5]}
+            dpr={typeof window !== 'undefined' && window.innerWidth < 768 ? [1, 1] : [1, 1.5]}
             gl={{ antialias: false }}
-            camera={{ position: [0, 0, typeof window !== 'undefined' && window.innerWidth < 768 ? 50 : 30], fov: typeof window !== 'undefined' && window.innerWidth < 768 ? 60 : 50, near: 1, far: 100 }}
+            camera={{ position: [0, 0, typeof window !== 'undefined' && window.innerWidth < 768 ? 55 : 30], fov: typeof window !== 'undefined' && window.innerWidth < 768 ? 70 : 50, near: 1, far: 120 }}
           >
             <color attach="background" args={[colors.bg]} />
             <Physics timeStep="vary" gravity={[0, 0, 0]}>
