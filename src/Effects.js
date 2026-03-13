@@ -49,7 +49,7 @@ export function Effects() {
   }, [composer, camera, scene])
 
   useFrame((state, delta) => {
-    gl.autoClear = true // ?
+    gl.autoClear = true
     composer.render(delta)
   }, 1)
 }
