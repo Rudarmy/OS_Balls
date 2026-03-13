@@ -13,18 +13,18 @@ const buildConnectors = (colors, accentIndex) => {
   const { dark, light } = colors
   const accent = colors.accents[accentIndex]
   const baseConfigs = [
-    { color: dark, roughness: 0.1, metalness: 0.5 },
-    { color: dark, roughness: 0.1, metalness: 0.5 },
-    { color: dark, roughness: 0.1, metalness: 0.5 },
+    { color: dark, roughness: 0.6, metalness: 0.05 },
+    { color: dark, roughness: 0.6, metalness: 0.05 },
+    { color: dark, roughness: 0.6, metalness: 0.05 },
     { color: light, roughness: 0.1, metalness: 0.1 },
     { color: light, roughness: 0.1, metalness: 0.1 },
     { color: light, roughness: 0.1, metalness: 0.1 },
     { color: accent, roughness: 0.1, accent: true },
     { color: accent, roughness: 0.1, accent: true },
     { color: accent, roughness: 0.1, accent: true },
-    { color: dark, roughness: 0.1 },
-    { color: dark, roughness: 0.3 },
-    { color: dark, roughness: 0.3 },
+    { color: dark, roughness: 0.75, metalness: 0.05 },
+    { color: dark, roughness: 0.75, metalness: 0.05 },
+    { color: dark, roughness: 0.6, metalness: 0.05 },
     { color: light, roughness: 0.1 },
     { color: light, roughness: 0.2 },
     { color: light, roughness: 0.1 },
@@ -81,7 +81,7 @@ function BokehBackground({ dark, light, accent }) {
 // ─── Main App ────────────────────────────────────────────────────
 export default function App(props) {
   const [colors, setColors] = useState({
-    dark: '#666666',
+    dark: '#888888',
     light: '#ffffff',
     accents: ['#ff4060', '#ffcc00', '#20ffa0', '#4060ff'],
     bg: '#141622',
