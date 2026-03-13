@@ -163,23 +163,22 @@ function ColorRow({ label, color, onChange, active }) {
 }
 
 // ─── Physics Sphere ──────────────────────────────────────────────
-const IS_PORTRAIT = typeof window !== 'undefined' && window.innerHeight > window.innerWidth
-const BOUNDS_X = IS_PORTRAIT ? 9 : 16
-const BOUNDS_Y = IS_PORTRAIT ? 16 : 9
-
 function Sphere({ position, children, vec = new THREE.Vector3(), scale = 1, r = THREE.MathUtils.randFloatSpread, accent, color = 'white', ...props }) {
   const api = useRef()
   const ref = useRef()
-  const pos = useMemo(() => position || [(Math.random() - 0.5) * BOUNDS_X * 2, (Math.random() - 0.5) * BOUNDS_Y * 2, r(3)], [])
-  useFrame((state, delta) => {
+  const pos = useMemo(() => position || [(Math.random() - 0.5) * 20, (Math.random() - 0.5) * 20, r(3)], [])
+  useFrame(({ viewport }, delta) => {
     delta = Math.min(0.1, delta)
     if (api.current) {
+      const isPortrait = viewport.height > viewport.width
+      const bx = isPortrait ? 9 : 16
+      const by = isPortrait ? 16 : 9
       const t = api.current.translation()
       let fx = 0, fy = 0
-      if (t.x > BOUNDS_X) fx = (BOUNDS_X - t.x) * 0.5
-      else if (t.x < -BOUNDS_X) fx = (-BOUNDS_X - t.x) * 0.5
-      if (t.y > BOUNDS_Y) fy = (BOUNDS_Y - t.y) * 0.5
-      else if (t.y < -BOUNDS_Y) fy = (-BOUNDS_Y - t.y) * 0.5
+      if (t.x > bx) fx = (bx - t.x) * 0.5
+      else if (t.x < -bx) fx = (-bx - t.x) * 0.5
+      if (t.y > by) fy = (by - t.y) * 0.5
+      else if (t.y < -by) fy = (-by - t.y) * 0.5
       vec.set(fx, fy, t.z * -0.5)
       api.current.applyImpulse(vec)
     }
