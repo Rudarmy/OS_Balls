@@ -81,7 +81,7 @@ function BokehBackground({ dark, light, accent }) {
 // ─── Main App ────────────────────────────────────────────────────
 export default function App(props) {
   const [colors, setColors] = useState({
-    dark: '#444444',
+    dark: '#666666',
     light: '#ffffff',
     accents: ['#ff4060', '#ffcc00', '#20ffa0', '#4060ff'],
     bg: '#141622',
@@ -113,7 +113,7 @@ export default function App(props) {
             onClick={handleClick}
             dpr={[1, 1.5]}
             gl={{ antialias: false }}
-            camera={{ position: [0, 0, 30], fov: 50, near: 1, far: 80 }}
+            camera={{ position: [0, 0, typeof window !== 'undefined' && window.innerWidth < 768 ? 50 : 30], fov: typeof window !== 'undefined' && window.innerWidth < 768 ? 60 : 50, near: 1, far: 100 }}
           >
             <color attach="background" args={[colors.bg]} />
             <Physics timeStep="vary" gravity={[0, 0, 0]}>
